@@ -22,6 +22,13 @@ import {
   Chip,
   LinearProgress,
   Divider,
+  TextField,
+  MenuItem,
+  InputAdornment,
+  FormControl,
+  InputLabel,
+  Select,
+  Collapse,
 } from '@mui/material';
 import {
   Inventory as InventoryIcon,
@@ -36,6 +43,10 @@ import {
   Download as DownloadIcon,
   LocalShipping as ShippingIcon,
   Assessment as AssessmentIcon,
+  Search as SearchIcon,
+  FilterList as FilterIcon,
+  Clear as ClearIcon,
+  ExpandLess as ExpandLessIcon,
 } from '@mui/icons-material';
 import {
   PieChart,
@@ -67,6 +78,12 @@ export default function Dashboard() {
   const [alerts, setAlerts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  // Inventory Overview filter states
+  const [searchTerm, setSearchTerm] = useState('');
+  const [categoryFilter, setCategoryFilter] = useState('');
+  const [statusFilter, setStatusFilter] = useState('');
+  const [showFilters, setShowFilters] = useState(false);
 
   const fetchData = async () => {
     setLoading(true);
@@ -222,6 +239,30 @@ export default function Dashboard() {
     .filter((p) => p.stockStatus.severity >= 2)
     .sort((a, b) => b.stockStatus.severity - a.stockStatus.severity)
     .slice(0, 5);
+
+  // Get unique categories for filter
+  const categories = [...new Set(products.map((p) => p.category))].sort();
+
+  // Filter inventory overview
+  const filteredInventory = inventoryOverview.filter((item) => {
+    const matchesSearch = !searchTerm ||
+      item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.sku.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = !categoryFilter || item.category === categoryFilter;
+    const matchesStatus = !statusFilter || item.stockStatus.status === statusFilter;
+    return matchesSearch && matchesCategory && matchesStatus;
+  });
+
+  // Limit to 10 items for dashboard display
+  const displayedInventory = filteredInventory.slice(0, 10);
+  const hasMoreItems = filteredInventory.length > 10;
+  const hasActiveFilters = searchTerm || categoryFilter || statusFilter;
+
+  const clearFilters = () => {
+    setSearchTerm('');
+    setCategoryFilter('');
+    setStatusFilter('');
+  };
 
   if (loading) {
     return (
@@ -604,15 +645,109 @@ export default function Dashboard() {
       <Card>
         <CardHeader
           title="Inventory Overview"
-          subheader="Complete stock levels across all products and warehouses"
+          subheader={
+            <Typography variant="body2" color="text.secondary">
+              Showing {displayedInventory.length} of {filteredInventory.length} products
+              {hasActiveFilters && ` (filtered from ${inventoryOverview.length} total)`}
+            </Typography>
+          }
           action={
-            <Tooltip title="Export to CSV">
-              <IconButton onClick={handleExport}>
-                <DownloadIcon />
-              </IconButton>
-            </Tooltip>
+            <Box sx={{ display: 'flex', gap: { xs: 0.5, sm: 1 }, alignItems: 'center' }}>
+              <Tooltip title={showFilters ? 'Hide filters' : 'Show filters'}>
+                <IconButton
+                  onClick={() => setShowFilters(!showFilters)}
+                  color={hasActiveFilters ? 'primary' : 'default'}
+                  size="small"
+                >
+                  {showFilters ? <ExpandLessIcon /> : <FilterIcon />}
+                </IconButton>
+              </Tooltip>
+              <Tooltip title="Export to CSV">
+                <IconButton onClick={handleExport} size="small">
+                  <DownloadIcon />
+                </IconButton>
+              </Tooltip>
+              <Button
+                size="small"
+                endIcon={<ArrowIcon />}
+                component={Link}
+                href="/stock"
+                sx={{ display: { xs: 'none', sm: 'flex' } }}
+              >
+                View All
+              </Button>
+            </Box>
           }
         />
+
+        {/* Collapsible Filter Section */}
+        <Collapse in={showFilters}>
+          <Box sx={{ p: { xs: 1.5, sm: 2 }, pt: 0, display: 'flex', gap: { xs: 1, sm: 2 }, flexWrap: 'wrap', alignItems: 'center' }}>
+            <TextField
+              size="small"
+              placeholder="Search products..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon fontSize="small" />
+                  </InputAdornment>
+                ),
+                endAdornment: searchTerm && (
+                  <InputAdornment position="end">
+                    <IconButton size="small" onClick={() => setSearchTerm('')}>
+                      <ClearIcon fontSize="small" />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+              sx={{ minWidth: { xs: '100%', sm: 200 }, flex: { xs: 1, sm: 'none' } }}
+            />
+            <FormControl size="small" sx={{ minWidth: { xs: 'calc(50% - 4px)', sm: 140 } }}>
+              <InputLabel id="category-filter-label">Category</InputLabel>
+              <Select
+                labelId="category-filter-label"
+                value={categoryFilter}
+                onChange={(e) => setCategoryFilter(e.target.value)}
+                label="Category"
+              >
+                <MenuItem value="">All Categories</MenuItem>
+                {categories.map((cat) => (
+                  <MenuItem key={cat} value={cat}>
+                    {cat}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <FormControl size="small" sx={{ minWidth: { xs: 'calc(50% - 4px)', sm: 140 } }}>
+              <InputLabel id="status-filter-label">Status</InputLabel>
+              <Select
+                labelId="status-filter-label"
+                value={statusFilter}
+                onChange={(e) => setStatusFilter(e.target.value)}
+                label="Status"
+              >
+                <MenuItem value="">All Statuses</MenuItem>
+                <MenuItem value="out">Out of Stock</MenuItem>
+                <MenuItem value="critical">Critical</MenuItem>
+                <MenuItem value="low">Low</MenuItem>
+                <MenuItem value="adequate">Adequate</MenuItem>
+                <MenuItem value="overstocked">Overstocked</MenuItem>
+              </Select>
+            </FormControl>
+            {hasActiveFilters && (
+              <Button
+                size="small"
+                startIcon={<ClearIcon />}
+                onClick={clearFilters}
+              >
+                Clear
+              </Button>
+            )}
+          </Box>
+        </Collapse>
+
         <TableContainer>
           <Table>
             <TableHead>
@@ -629,72 +764,95 @@ export default function Dashboard() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {inventoryOverview.map((item) => {
-                const stockPercentage = Math.min((item.totalQuantity / item.reorderPoint) * 100, 200);
-                const progressColor =
-                  item.stockStatus.status === 'critical' || item.stockStatus.status === 'out'
-                    ? 'error'
-                    : item.stockStatus.status === 'low'
-                    ? 'warning'
-                    : 'success';
+              {displayedInventory.length === 0 ? (
+                <TableRow>
+                  <TableCell colSpan={9} align="center" sx={{ py: 4 }}>
+                    <Typography color="text.secondary">
+                      {hasActiveFilters ? 'No products match your filters' : 'No products found'}
+                    </Typography>
+                  </TableCell>
+                </TableRow>
+              ) : (
+                displayedInventory.map((item) => {
+                  const stockPercentage = Math.min((item.totalQuantity / item.reorderPoint) * 100, 200);
+                  const progressColor =
+                    item.stockStatus.status === 'critical' || item.stockStatus.status === 'out'
+                      ? 'error'
+                      : item.stockStatus.status === 'low'
+                      ? 'warning'
+                      : 'success';
 
-                return (
-                  <TableRow
-                    key={item.id}
-                    sx={{
-                      '&:hover': { bgcolor: alpha(theme.palette.primary.main, 0.04) },
-                    }}
-                  >
-                    <TableCell>
-                      <Typography variant="body2" fontWeight={600} fontFamily="monospace">
-                        {item.sku}
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Typography variant="body2" fontWeight={500}>
-                        {item.name}
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Chip label={item.category} size="small" variant="outlined" />
-                    </TableCell>
-                    <TableCell align="right">{formatCurrency(item.unitCost)}</TableCell>
-                    <TableCell align="right">
-                      <Typography fontWeight={600}>{formatNumber(item.totalQuantity)}</Typography>
-                    </TableCell>
-                    <TableCell align="right">{formatNumber(item.reorderPoint)}</TableCell>
-                    <TableCell align="right" sx={{ minWidth: 120 }}>
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                        <LinearProgress
-                          variant="determinate"
-                          value={Math.min(stockPercentage, 100)}
-                          color={progressColor}
-                          sx={{
-                            flex: 1,
-                            height: 8,
-                            borderRadius: 4,
-                            bgcolor: alpha(theme.palette[progressColor].main, 0.1),
-                          }}
-                        />
-                        <Typography variant="caption" sx={{ minWidth: 40, textAlign: 'right' }}>
-                          {stockPercentage.toFixed(0)}%
+                  return (
+                    <TableRow
+                      key={item.id}
+                      sx={{
+                        '&:hover': { bgcolor: alpha(theme.palette.primary.main, 0.04) },
+                      }}
+                    >
+                      <TableCell>
+                        <Typography variant="body2" fontWeight={600} fontFamily="monospace">
+                          {item.sku}
                         </Typography>
-                      </Box>
-                    </TableCell>
-                    <TableCell>
-                      <StockStatusChip quantity={item.totalQuantity} reorderPoint={item.reorderPoint} />
-                    </TableCell>
-                    <TableCell align="right">
-                      <Typography fontWeight={600} color="primary.main">
-                        {formatCurrency(item.value)}
-                      </Typography>
-                    </TableCell>
-                  </TableRow>
-                );
-              })}
+                      </TableCell>
+                      <TableCell>
+                        <Typography variant="body2" fontWeight={500}>
+                          {item.name}
+                        </Typography>
+                      </TableCell>
+                      <TableCell>
+                        <Chip label={item.category} size="small" variant="outlined" />
+                      </TableCell>
+                      <TableCell align="right">{formatCurrency(item.unitCost)}</TableCell>
+                      <TableCell align="right">
+                        <Typography fontWeight={600}>{formatNumber(item.totalQuantity)}</Typography>
+                      </TableCell>
+                      <TableCell align="right">{formatNumber(item.reorderPoint)}</TableCell>
+                      <TableCell align="right" sx={{ minWidth: 120 }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                          <LinearProgress
+                            variant="determinate"
+                            value={Math.min(stockPercentage, 100)}
+                            color={progressColor}
+                            sx={{
+                              flex: 1,
+                              height: 8,
+                              borderRadius: 4,
+                              bgcolor: alpha(theme.palette[progressColor].main, 0.1),
+                            }}
+                          />
+                          <Typography variant="caption" sx={{ minWidth: 40, textAlign: 'right' }}>
+                            {stockPercentage.toFixed(0)}%
+                          </Typography>
+                        </Box>
+                      </TableCell>
+                      <TableCell>
+                        <StockStatusChip quantity={item.totalQuantity} reorderPoint={item.reorderPoint} />
+                      </TableCell>
+                      <TableCell align="right">
+                        <Typography fontWeight={600} color="primary.main">
+                          {formatCurrency(item.value)}
+                        </Typography>
+                      </TableCell>
+                    </TableRow>
+                  );
+                })
+              )}
             </TableBody>
           </Table>
         </TableContainer>
+
+        {/* View All Footer */}
+        {hasMoreItems && (
+          <Box sx={{ p: 2, textAlign: 'center', borderTop: 1, borderColor: 'divider' }}>
+            <Button
+              endIcon={<ArrowIcon />}
+              component={Link}
+              href="/stock"
+            >
+              View All {filteredInventory.length} Products
+            </Button>
+          </Box>
+        )}
       </Card>
     </Layout>
   );
