@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": 1,
+    "productId": 6,
+    "acknowledged": true,
+    "acknowledgedAt": "2026-01-16T09:43:39.117Z",
+    "dismissed": false,
+    "dismissedAt": null,
+    "notes": "",
+    "createdAt": "2026-01-16T09:43:39.117Z",
+    "updatedAt": "2026-01-16T09:43:39.117Z"
+  }
+]
