@@ -12,10 +12,16 @@ const readJsonFile = (filename) => {
   }
 };
 
-// Helper to write JSON file
+// Helper to write JSON file (with error handling for read-only environments like Vercel)
 const writeJsonFile = (filename, data) => {
   const filePath = path.join(process.cwd(), 'data', filename);
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+  try {
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+    return true;
+  } catch (error) {
+    console.error('Write error (expected on Vercel):', error.message);
+    return false;
+  }
 };
 
 // Calculate stock status
@@ -230,12 +236,16 @@ export default function handler(req, res) {
 
       alertRecords[alertIndex].updatedAt = now;
 
-      // Save updated alerts
-      writeJsonFile('alerts.json', alertRecords);
+      // Save updated alerts (may fail on read-only environments like Vercel)
+      const writeSuccess = writeJsonFile('alerts.json', alertRecords);
 
       res.status(200).json({
         success: true,
         alert: alertRecords[alertIndex],
+        persisted: writeSuccess,
+        message: writeSuccess
+          ? 'Alert updated successfully'
+          : 'Alert updated for this session (changes not persisted on serverless deployment)',
       });
     } else {
       res.setHeader('Allow', ['GET', 'POST']);

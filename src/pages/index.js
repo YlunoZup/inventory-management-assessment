@@ -177,24 +177,30 @@ export default function Dashboard() {
     };
   });
 
-  // Colors for charts - extended palette for more categories
+  // Colors for charts - hardcoded to ensure visibility
   const COLORS = [
-    theme.palette.primary.main,
-    theme.palette.secondary.main,
-    theme.palette.success.main,
-    theme.palette.warning.main,
-    theme.palette.info.main,
-    theme.palette.error.main,
-    '#8884d8',
-    '#82ca9d',
-    '#ffc658',
-    '#ff7c43',
-    '#665191',
-    '#a05195',
-    '#d45087',
-    '#f95d6a',
-    '#ff7c43',
+    '#2e7d32', // green
+    '#1565c0', // blue
+    '#f57c00', // orange
+    '#7b1fa2', // purple
+    '#00838f', // teal
+    '#c62828', // red
+    '#8884d8', // violet
+    '#82ca9d', // light green
+    '#ffc658', // yellow
+    '#ff7c43', // coral
+    '#665191', // indigo
+    '#a05195', // magenta
+    '#d45087', // pink
+    '#f95d6a', // salmon
+    '#00acc1', // cyan
   ];
+
+  // Bar chart colors
+  const BAR_COLORS = {
+    units: '#2e7d32',
+    value: '#1565c0',
+  };
 
   // Export inventory data
   const handleExport = () => {
@@ -361,7 +367,7 @@ export default function Dashboard() {
                   />
                   <YAxis
                     yAxisId="left"
-                    stroke={theme.palette.primary.main}
+                    stroke={BAR_COLORS.units}
                     tick={{ fontSize: 11 }}
                     tickFormatter={(value) => value >= 1000 ? `${(value/1000).toFixed(0)}k` : value}
                     width={50}
@@ -369,7 +375,7 @@ export default function Dashboard() {
                   <YAxis
                     yAxisId="right"
                     orientation="right"
-                    stroke={theme.palette.secondary.main}
+                    stroke={BAR_COLORS.value}
                     tick={{ fontSize: 11 }}
                     tickFormatter={(value) => value >= 1000 ? `$${(value/1000).toFixed(0)}k` : `$${value}`}
                     width={60}
@@ -394,7 +400,7 @@ export default function Dashboard() {
                     yAxisId="left"
                     dataKey="units"
                     name="Units"
-                    fill={theme.palette.primary.main}
+                    fill={BAR_COLORS.units}
                     radius={[4, 4, 0, 0]}
                     maxBarSize={50}
                   />
@@ -402,7 +408,7 @@ export default function Dashboard() {
                     yAxisId="right"
                     dataKey="value"
                     name="Value ($)"
-                    fill={theme.palette.secondary.main}
+                    fill={BAR_COLORS.value}
                     radius={[4, 4, 0, 0]}
                     maxBarSize={50}
                   />
