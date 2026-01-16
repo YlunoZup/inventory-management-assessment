@@ -356,64 +356,66 @@ export default function Dashboard() {
               sx={{ pb: 1 }}
             />
             <CardContent sx={{ pt: 0 }}>
-              <ResponsiveContainer width="100%" height={320}>
-                <BarChart data={warehouseData} margin={{ top: 20, right: 40, left: 10, bottom: 20 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke={theme.palette.divider} />
-                  <XAxis
-                    dataKey="name"
-                    stroke={theme.palette.text.secondary}
-                    tick={{ fontSize: 12 }}
-                    tickMargin={10}
-                  />
-                  <YAxis
-                    yAxisId="left"
-                    stroke={BAR_COLORS.units}
-                    tick={{ fontSize: 11 }}
-                    tickFormatter={(value) => value >= 1000 ? `${(value/1000).toFixed(0)}k` : value}
-                    width={50}
-                  />
-                  <YAxis
-                    yAxisId="right"
-                    orientation="right"
-                    stroke={BAR_COLORS.value}
-                    tick={{ fontSize: 11 }}
-                    tickFormatter={(value) => value >= 1000 ? `$${(value/1000).toFixed(0)}k` : `$${value}`}
-                    width={60}
-                  />
-                  <RechartsTooltip
-                    contentStyle={{
-                      backgroundColor: theme.palette.background.paper,
-                      border: `1px solid ${theme.palette.divider}`,
-                      borderRadius: 8,
-                      padding: '8px 12px',
-                    }}
-                    formatter={(value, name) => [
-                      name === 'units' ? formatNumber(value) : formatCurrency(value),
-                      name === 'units' ? 'Units' : 'Value',
-                    ]}
-                  />
-                  <Legend
-                    wrapperStyle={{ paddingTop: 16 }}
-                    iconType="circle"
-                  />
-                  <Bar
-                    yAxisId="left"
-                    dataKey="units"
-                    name="Units"
-                    fill={BAR_COLORS.units}
-                    radius={[4, 4, 0, 0]}
-                    maxBarSize={50}
-                  />
-                  <Bar
-                    yAxisId="right"
-                    dataKey="value"
-                    name="Value ($)"
-                    fill={BAR_COLORS.value}
-                    radius={[4, 4, 0, 0]}
-                    maxBarSize={50}
-                  />
-                </BarChart>
-              </ResponsiveContainer>
+              <Box sx={{ width: '100%', height: 320 }}>
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={warehouseData} margin={{ top: 20, right: 40, left: 10, bottom: 20 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
+                    <XAxis
+                      dataKey="name"
+                      stroke="#666666"
+                      tick={{ fontSize: 12, fill: '#666666' }}
+                      tickMargin={10}
+                    />
+                    <YAxis
+                      yAxisId="left"
+                      stroke="#2e7d32"
+                      tick={{ fontSize: 11, fill: '#2e7d32' }}
+                      tickFormatter={(value) => value >= 1000 ? `${(value/1000).toFixed(0)}k` : value}
+                      width={50}
+                    />
+                    <YAxis
+                      yAxisId="right"
+                      orientation="right"
+                      stroke="#1565c0"
+                      tick={{ fontSize: 11, fill: '#1565c0' }}
+                      tickFormatter={(value) => value >= 1000 ? `$${(value/1000).toFixed(0)}k` : `$${value}`}
+                      width={60}
+                    />
+                    <RechartsTooltip
+                      contentStyle={{
+                        backgroundColor: '#ffffff',
+                        border: '1px solid #e0e0e0',
+                        borderRadius: 8,
+                        padding: '8px 12px',
+                      }}
+                      formatter={(value, name) => [
+                        name === 'units' ? formatNumber(value) : formatCurrency(value),
+                        name === 'units' ? 'Units' : 'Value',
+                      ]}
+                    />
+                    <Legend
+                      wrapperStyle={{ paddingTop: 16 }}
+                      iconType="circle"
+                    />
+                    <Bar
+                      yAxisId="left"
+                      dataKey="units"
+                      name="Units"
+                      fill="#2e7d32"
+                      radius={[4, 4, 0, 0]}
+                      maxBarSize={50}
+                    />
+                    <Bar
+                      yAxisId="right"
+                      dataKey="value"
+                      name="Value ($)"
+                      fill="#1565c0"
+                      radius={[4, 4, 0, 0]}
+                      maxBarSize={50}
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
+              </Box>
             </CardContent>
           </Card>
         </Grid>
@@ -427,41 +429,43 @@ export default function Dashboard() {
               sx={{ pb: 1 }}
             />
             <CardContent sx={{ pt: 0 }}>
-              <ResponsiveContainer width="100%" height={320}>
-                <PieChart>
-                  <Pie
-                    data={categoryData}
-                    cx="50%"
-                    cy="45%"
-                    innerRadius={50}
-                    outerRadius={85}
-                    paddingAngle={2}
-                    dataKey="value"
-                    labelLine={false}
-                  >
-                    {categoryData.map((entry, index) => (
-                      <Cell key={entry.name} fill={COLORS[index % COLORS.length]} />
-                    ))}
-                  </Pie>
-                  <RechartsTooltip
-                    contentStyle={{
-                      backgroundColor: theme.palette.background.paper,
-                      border: `1px solid ${theme.palette.divider}`,
-                      borderRadius: 8,
-                      padding: '8px 12px',
-                    }}
-                    formatter={(value, name) => [formatCurrency(value), name]}
-                  />
-                  <Legend
-                    layout="horizontal"
-                    align="center"
-                    verticalAlign="bottom"
-                    wrapperStyle={{ paddingTop: 16, fontSize: 12 }}
-                    iconType="circle"
-                    iconSize={10}
-                  />
-                </PieChart>
-              </ResponsiveContainer>
+              <Box sx={{ width: '100%', height: 320 }}>
+                <ResponsiveContainer width="100%" height="100%">
+                  <PieChart>
+                    <Pie
+                      data={categoryData}
+                      cx="50%"
+                      cy="45%"
+                      innerRadius={50}
+                      outerRadius={85}
+                      paddingAngle={2}
+                      dataKey="value"
+                      labelLine={false}
+                    >
+                      {categoryData.map((entry, index) => (
+                        <Cell key={entry.name} fill={COLORS[index % COLORS.length]} />
+                      ))}
+                    </Pie>
+                    <RechartsTooltip
+                      contentStyle={{
+                        backgroundColor: '#ffffff',
+                        border: '1px solid #e0e0e0',
+                        borderRadius: 8,
+                        padding: '8px 12px',
+                      }}
+                      formatter={(value, name) => [formatCurrency(value), name]}
+                    />
+                    <Legend
+                      layout="horizontal"
+                      align="center"
+                      verticalAlign="bottom"
+                      wrapperStyle={{ paddingTop: 16, fontSize: 12 }}
+                      iconType="circle"
+                      iconSize={10}
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
+              </Box>
             </CardContent>
           </Card>
         </Grid>
