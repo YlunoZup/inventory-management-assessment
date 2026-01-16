@@ -606,7 +606,9 @@ Deployed on Vercel with automatic deployments from GitHub.
 
 ## Video Walkthrough
 
-[To be added after recording]
+**[https://www.youtube.com/watch?v=_Rfl3x6-b38](https://www.youtube.com/watch?v=_Rfl3x6-b38)**
+
+A 5-minute walkthrough covering all three core tasks: Dashboard redesign, Stock Transfers, and Alerts system.
 
 ---
 
