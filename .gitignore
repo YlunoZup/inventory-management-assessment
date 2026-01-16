@@ -30,6 +30,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Local documentation (not for repo)
+INFRASTRUCTURE.txt
+VIDEO_WALKTHROUGH_SCRIPT.txt
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
