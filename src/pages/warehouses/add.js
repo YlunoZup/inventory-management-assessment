@@ -126,12 +126,14 @@ export default function AddWarehouse() {
                   />
                 </Grid>
                 <Grid item xs={12}>
-                  <Box sx={{ display: 'flex', gap: 2, justifyContent: 'flex-end' }}>
+                  <Box sx={{ display: 'flex', gap: 2, justifyContent: { xs: 'stretch', sm: 'flex-end' }, flexDirection: { xs: 'column-reverse', sm: 'row' } }}>
                     <Button
                       variant="outlined"
                       component={Link}
                       href="/warehouses"
                       disabled={submitting}
+                      fullWidth
+                      sx={{ width: { sm: 'auto' } }}
                     >
                       Cancel
                     </Button>
@@ -140,6 +142,8 @@ export default function AddWarehouse() {
                       variant="contained"
                       startIcon={<SaveIcon />}
                       disabled={submitting}
+                      fullWidth
+                      sx={{ width: { sm: 'auto' } }}
                     >
                       {submitting ? 'Adding...' : 'Add Warehouse'}
                     </Button>

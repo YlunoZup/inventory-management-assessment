@@ -433,7 +433,7 @@ export default function AlertsPage() {
         </Box>
 
         {/* Filters */}
-        <Box sx={{ p: 2, display: 'flex', gap: 2, flexWrap: 'wrap', alignItems: 'center' }}>
+        <Box sx={{ p: { xs: 1.5, sm: 2 }, display: 'flex', gap: { xs: 1, sm: 2 }, flexWrap: 'wrap', alignItems: 'center' }}>
           <TextField
             size="small"
             placeholder="Search by product name or SKU..."
@@ -453,9 +453,9 @@ export default function AlertsPage() {
                 </InputAdornment>
               ),
             }}
-            sx={{ minWidth: 250 }}
+            sx={{ minWidth: { xs: '100%', sm: 250 }, flex: { xs: 1, sm: 'none' } }}
           />
-          <FormControl size="small" sx={{ minWidth: 150 }}>
+          <FormControl size="small" sx={{ minWidth: { xs: 'calc(50% - 4px)', sm: 150 } }}>
             <InputLabel id="category-filter-label">Category</InputLabel>
             <Select
               labelId="category-filter-label"
@@ -477,10 +477,10 @@ export default function AlertsPage() {
               startIcon={<ClearIcon />}
               onClick={clearFilters}
             >
-              Clear Filters
+              Clear
             </Button>
           )}
-          <Typography variant="body2" color="text.secondary" sx={{ ml: 'auto' }}>
+          <Typography variant="body2" color="text.secondary" sx={{ ml: 'auto', display: { xs: 'none', sm: 'block' } }}>
             {filteredAlerts.length} alert{filteredAlerts.length !== 1 ? 's' : ''} found
           </Typography>
         </Box>

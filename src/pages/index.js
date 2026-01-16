@@ -356,9 +356,9 @@ export default function Dashboard() {
               sx={{ pb: 1 }}
             />
             <CardContent sx={{ pt: 0 }}>
-              <Box sx={{ width: '100%', height: 320 }}>
+              <Box sx={{ width: '100%', height: { xs: 250, sm: 280, md: 320 } }}>
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={warehouseData} margin={{ top: 20, right: 40, left: 10, bottom: 20 }}>
+                  <BarChart data={warehouseData} margin={{ top: 20, right: 30, left: 5, bottom: 20 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
                     <XAxis
                       dataKey="name"
@@ -429,7 +429,7 @@ export default function Dashboard() {
               sx={{ pb: 1 }}
             />
             <CardContent sx={{ pt: 0 }}>
-              <Box sx={{ width: '100%', height: 320 }}>
+              <Box sx={{ width: '100%', height: { xs: 250, sm: 280, md: 320 } }}>
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
                     <Pie
@@ -560,9 +560,11 @@ export default function Dashboard() {
                     <Paper
                       key={item.id}
                       sx={{
-                        p: 2,
+                        p: { xs: 1.5, sm: 2 },
                         display: 'flex',
-                        alignItems: 'center',
+                        alignItems: { xs: 'flex-start', sm: 'center' },
+                        flexDirection: { xs: 'column', sm: 'row' },
+                        gap: { xs: 1, sm: 0 },
                         justifyContent: 'space-between',
                         bgcolor: alpha(
                           item.stockStatus.status === 'critical' || item.stockStatus.status === 'out'
@@ -586,7 +588,7 @@ export default function Dashboard() {
                           {item.sku} | {formatNumber(item.totalQuantity)} / {formatNumber(item.reorderPoint)} units
                         </Typography>
                       </Box>
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, alignSelf: { xs: 'flex-end', sm: 'center' } }}>
                         <StockStatusChip quantity={item.totalQuantity} reorderPoint={item.reorderPoint} />
                       </Box>
                     </Paper>

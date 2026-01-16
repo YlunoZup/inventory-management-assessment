@@ -659,7 +659,7 @@ export default function TransfersPage() {
 
                     {/* Submit Button */}
                     <Grid item xs={12}>
-                      <Box sx={{ display: 'flex', gap: 2, justifyContent: 'flex-end' }}>
+                      <Box sx={{ display: 'flex', gap: 2, justifyContent: 'flex-end', flexWrap: 'wrap' }}>
                         <Button
                           variant="outlined"
                           onClick={() =>
@@ -672,6 +672,7 @@ export default function TransfersPage() {
                             })
                           }
                           disabled={submitting}
+                          sx={{ order: { xs: 2, sm: 1 }, width: { xs: '100%', sm: 'auto' } }}
                         >
                           Clear
                         </Button>
@@ -681,6 +682,7 @@ export default function TransfersPage() {
                           size="large"
                           startIcon={<TransferIcon />}
                           disabled={submitting}
+                          sx={{ order: { xs: 1, sm: 2 }, width: { xs: '100%', sm: 'auto' } }}
                         >
                           {submitting ? 'Processing...' : 'Complete Transfer'}
                         </Button>
@@ -716,7 +718,7 @@ export default function TransfersPage() {
             />
 
             {/* Filters */}
-            <Box sx={{ p: 2, display: 'flex', gap: 2, flexWrap: 'wrap', alignItems: 'center' }}>
+            <Box sx={{ p: { xs: 1.5, sm: 2 }, display: 'flex', gap: { xs: 1, sm: 2 }, flexWrap: 'wrap', alignItems: 'center' }}>
               <TextField
                 size="small"
                 placeholder="Search transfers..."
@@ -736,9 +738,9 @@ export default function TransfersPage() {
                     </InputAdornment>
                   ),
                 }}
-                sx={{ width: 220 }}
+                sx={{ width: { xs: '100%', sm: 220 }, flexGrow: { xs: 1, sm: 0 } }}
               />
-              <FormControl size="small" sx={{ minWidth: 150 }}>
+              <FormControl size="small" sx={{ minWidth: { xs: 'calc(50% - 4px)', sm: 150 } }}>
                 <InputLabel id="filter-product-label">Product</InputLabel>
                 <Select
                   labelId="filter-product-label"
@@ -754,7 +756,7 @@ export default function TransfersPage() {
                   ))}
                 </Select>
               </FormControl>
-              <FormControl size="small" sx={{ minWidth: 150 }}>
+              <FormControl size="small" sx={{ minWidth: { xs: 'calc(50% - 4px)', sm: 150 } }}>
                 <InputLabel id="filter-warehouse-label">Warehouse</InputLabel>
                 <Select
                   labelId="filter-warehouse-label"
@@ -775,8 +777,9 @@ export default function TransfersPage() {
                   size="small"
                   startIcon={<ClearIcon />}
                   onClick={clearFilters}
+                  sx={{ ml: { xs: 'auto', sm: 0 } }}
                 >
-                  Clear Filters
+                  Clear
                 </Button>
               )}
             </Box>

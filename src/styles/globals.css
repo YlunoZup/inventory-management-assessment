@@ -20,45 +20,212 @@ a {
   text-decoration: none;
 }
 
-/* Responsive table improvements */
+/* ============================================
+   MOBILE RESPONSIVE STYLES (max-width: 600px)
+   ============================================ */
 @media (max-width: 600px) {
+  /* Table improvements */
   .MuiTableContainer-root {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    margin: 0 -8px;
+    padding: 0 8px;
   }
 
   .MuiTable-root {
-    min-width: 650px;
+    min-width: 600px;
   }
 
   .MuiTableCell-root {
-    padding: 12px 8px;
-    font-size: 0.875rem;
+    padding: 10px 8px;
+    font-size: 0.8125rem;
   }
 
   .MuiTableCell-head {
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     white-space: nowrap;
+    padding: 8px;
   }
 
+  /* Card improvements */
   .MuiCardHeader-root {
-    padding: 12px 16px;
+    padding: 12px 12px 8px;
+  }
+
+  .MuiCardHeader-title {
+    font-size: 1rem !important;
+  }
+
+  .MuiCardHeader-subheader {
+    font-size: 0.75rem !important;
   }
 
   .MuiCardContent-root {
-    padding: 12px 16px;
+    padding: 12px !important;
   }
 
-  .recharts-wrapper {
+  .MuiCardContent-root:last-child {
+    padding-bottom: 12px !important;
+  }
+
+  /* Button improvements */
+  .MuiButton-root {
+    padding: 8px 12px;
+    font-size: 0.8125rem;
+  }
+
+  .MuiButton-startIcon {
+    margin-right: 4px;
+  }
+
+  /* TextField improvements */
+  .MuiTextField-root {
+    width: 100%;
+  }
+
+  .MuiInputBase-root {
+    font-size: 0.875rem;
+  }
+
+  .MuiInputLabel-root {
+    font-size: 0.875rem;
+  }
+
+  /* Select improvements */
+  .MuiSelect-select {
+    padding: 12px 14px;
+  }
+
+  /* Dialog improvements */
+  .MuiDialog-paper {
+    margin: 16px;
+    width: calc(100% - 32px);
+    max-height: calc(100% - 32px);
+  }
+
+  .MuiDialogTitle-root {
+    padding: 12px 16px;
+    font-size: 1.1rem;
+  }
+
+  .MuiDialogContent-root {
+    padding: 8px 16px;
+  }
+
+  .MuiDialogActions-root {
+    padding: 8px 16px 12px;
+  }
+
+  /* Chip improvements */
+  .MuiChip-root {
+    height: 24px;
     font-size: 0.75rem;
   }
 
+  .MuiChip-label {
+    padding: 0 8px;
+  }
+
+  /* Tab improvements */
+  .MuiTab-root {
+    min-width: auto;
+    padding: 8px 12px;
+    font-size: 0.8125rem;
+  }
+
+  /* Pagination improvements */
+  .MuiTablePagination-root {
+    overflow: visible;
+  }
+
+  .MuiTablePagination-toolbar {
+    padding-left: 8px;
+    padding-right: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .MuiTablePagination-selectLabel,
+  .MuiTablePagination-displayedRows {
+    font-size: 0.75rem;
+  }
+
+  /* Chart improvements */
+  .recharts-wrapper {
+    font-size: 0.7rem;
+  }
+
   .recharts-legend-wrapper {
-    font-size: 0.6875rem;
+    font-size: 0.625rem;
+  }
+
+  .recharts-cartesian-axis-tick-value {
+    font-size: 0.625rem;
+  }
+
+  /* Typography adjustments */
+  h1, .MuiTypography-h1 {
+    font-size: 1.75rem !important;
+  }
+
+  h2, .MuiTypography-h2 {
+    font-size: 1.5rem !important;
+  }
+
+  h3, .MuiTypography-h3 {
+    font-size: 1.25rem !important;
+  }
+
+  h4, .MuiTypography-h4 {
+    font-size: 1.1rem !important;
+  }
+
+  h5, .MuiTypography-h5 {
+    font-size: 1rem !important;
+  }
+
+  h6, .MuiTypography-h6 {
+    font-size: 0.9rem !important;
+  }
+
+  /* Alert improvements */
+  .MuiAlert-root {
+    padding: 8px 12px;
+  }
+
+  .MuiAlert-message {
+    font-size: 0.8125rem;
+  }
+
+  /* Form control improvements */
+  .MuiFormControl-root {
+    width: 100%;
+  }
+
+  /* Tooltip adjustments */
+  .MuiTooltip-tooltip {
+    font-size: 0.75rem;
   }
 }
 
-/* Chart responsive improvements */
+/* ============================================
+   TABLET RESPONSIVE STYLES (max-width: 900px)
+   ============================================ */
+@media (max-width: 900px) {
+  .MuiGrid-container {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .MuiCardHeader-action {
+    margin-top: 0;
+    margin-right: 0;
+  }
+}
+
+/* ============================================
+   CHART RESPONSIVE IMPROVEMENTS
+   ============================================ */
 .recharts-wrapper {
   max-width: 100%;
 }
@@ -67,8 +234,15 @@ a {
   overflow: visible;
 }
 
-/* Improve touch targets on mobile */
+.recharts-responsive-container {
+  min-height: 200px;
+}
+
+/* ============================================
+   TOUCH DEVICE IMPROVEMENTS
+   ============================================ */
 @media (pointer: coarse) {
+  /* Increase touch targets */
   .MuiIconButton-root {
     min-width: 44px;
     min-height: 44px;
@@ -81,16 +255,124 @@ a {
   .MuiChip-root {
     min-height: 32px;
   }
+
+  .MuiMenuItem-root {
+    min-height: 44px;
+  }
+
+  .MuiListItemButton-root {
+    min-height: 48px;
+  }
+
+  /* Better tap feedback */
+  .MuiButtonBase-root {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+  }
+
+  /* Disable hover effects on touch */
+  .MuiButton-root:hover {
+    background-color: inherit;
+  }
+
+  .MuiButton-contained:hover {
+    background-color: var(--mui-palette-primary-main);
+  }
 }
 
-/* Smooth scroll behavior */
+/* ============================================
+   SMOOTH SCROLL BEHAVIOR
+   ============================================ */
 html {
   scroll-behavior: smooth;
 }
 
-/* Better focus styles for accessibility */
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
 *:focus-visible {
   outline: 2px solid #1976d2;
   outline-offset: 2px;
 }
 
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  .MuiAppBar-root,
+  .MuiDrawer-root,
+  .MuiIconButton-root,
+  .MuiButton-root {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+  }
+
+  .MuiCard-root {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.hide-on-mobile {
+  display: block;
+}
+
+.show-on-mobile {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+
+  .show-on-mobile {
+    display: block !important;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+@media (max-width: 600px) {
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+}

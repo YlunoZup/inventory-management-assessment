@@ -381,7 +381,7 @@ export default function Stock() {
             </Typography>
           }
           action={
-            <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
+            <Box sx={{ display: 'flex', gap: { xs: 0.5, sm: 1 }, alignItems: 'center', flexWrap: 'wrap', justifyContent: 'flex-end' }}>
               <Tooltip title="Refresh data">
                 <IconButton onClick={fetchData} size="small">
                   <RefreshIcon />
@@ -391,12 +391,13 @@ export default function Stock() {
                 <IconButton
                   onClick={() => setShowFilters(!showFilters)}
                   color={hasActiveFilters ? 'primary' : 'default'}
+                  size="small"
                 >
                   {showFilters ? <ExpandLessIcon /> : <FilterIcon />}
                 </IconButton>
               </Tooltip>
               <Tooltip title="Export to CSV">
-                <IconButton onClick={handleExport} disabled={filteredStock.length === 0}>
+                <IconButton onClick={handleExport} disabled={filteredStock.length === 0} size="small">
                   <DownloadIcon />
                 </IconButton>
               </Tooltip>
@@ -405,9 +406,27 @@ export default function Stock() {
                 startIcon={<AddIcon />}
                 component={Link}
                 href="/stock/add"
+                size="small"
+                sx={{ display: { xs: 'none', sm: 'flex' } }}
               >
                 Add Stock
               </Button>
+              <Tooltip title="Add Stock" sx={{ display: { xs: 'flex', sm: 'none' } }}>
+                <IconButton
+                  color="primary"
+                  component={Link}
+                  href="/stock/add"
+                  sx={{
+                    display: { xs: 'flex', sm: 'none' },
+                    bgcolor: 'primary.main',
+                    color: 'white',
+                    '&:hover': { bgcolor: 'primary.dark' }
+                  }}
+                  size="small"
+                >
+                  <AddIcon />
+                </IconButton>
+              </Tooltip>
             </Box>
           }
         />
