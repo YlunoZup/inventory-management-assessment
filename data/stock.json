@@ -1,0 +1,112 @@
+[
+  {"id": 1, "productId": 1, "warehouseId": 1, "quantity": 250},
+  {"id": 2, "productId": 1, "warehouseId": 2, "quantity": 150},
+  {"id": 3, "productId": 1, "warehouseId": 4, "quantity": 80},
+
+  {"id": 4, "productId": 2, "warehouseId": 1, "quantity": 1200},
+  {"id": 5, "productId": 2, "warehouseId": 3, "quantity": 800},
+  {"id": 6, "productId": 2, "warehouseId": 5, "quantity": 650},
+
+  {"id": 7, "productId": 3, "warehouseId": 1, "quantity": 2500},
+  {"id": 8, "productId": 3, "warehouseId": 2, "quantity": 1800},
+  {"id": 9, "productId": 3, "warehouseId": 6, "quantity": 1200},
+
+  {"id": 10, "productId": 4, "warehouseId": 1, "quantity": 950},
+  {"id": 11, "productId": 4, "warehouseId": 2, "quantity": 600},
+  {"id": 12, "productId": 4, "warehouseId": 3, "quantity": 420},
+
+  {"id": 13, "productId": 5, "warehouseId": 2, "quantity": 450},
+  {"id": 14, "productId": 5, "warehouseId": 3, "quantity": 700},
+  {"id": 15, "productId": 5, "warehouseId": 4, "quantity": 320},
+
+  {"id": 16, "productId": 6, "warehouseId": 1, "quantity": 45},
+  {"id": 17, "productId": 6, "warehouseId": 3, "quantity": 30},
+
+  {"id": 18, "productId": 7, "warehouseId": 1, "quantity": 850},
+  {"id": 19, "productId": 7, "warehouseId": 2, "quantity": 620},
+  {"id": 20, "productId": 7, "warehouseId": 4, "quantity": 480},
+  {"id": 21, "productId": 7, "warehouseId": 6, "quantity": 350},
+
+  {"id": 22, "productId": 8, "warehouseId": 1, "quantity": 180},
+  {"id": 23, "productId": 8, "warehouseId": 5, "quantity": 95},
+
+  {"id": 24, "productId": 9, "warehouseId": 1, "quantity": 150},
+  {"id": 25, "productId": 9, "warehouseId": 2, "quantity": 85},
+  {"id": 26, "productId": 9, "warehouseId": 3, "quantity": 60},
+
+  {"id": 27, "productId": 10, "warehouseId": 2, "quantity": 0},
+  {"id": 28, "productId": 10, "warehouseId": 4, "quantity": 25},
+
+  {"id": 29, "productId": 11, "warehouseId": 1, "quantity": 520},
+  {"id": 30, "productId": 11, "warehouseId": 3, "quantity": 380},
+  {"id": 31, "productId": 11, "warehouseId": 5, "quantity": 290},
+
+  {"id": 32, "productId": 12, "warehouseId": 1, "quantity": 480},
+  {"id": 33, "productId": 12, "warehouseId": 2, "quantity": 350},
+  {"id": 34, "productId": 12, "warehouseId": 6, "quantity": 220},
+
+  {"id": 35, "productId": 13, "warehouseId": 1, "quantity": 15},
+  {"id": 36, "productId": 13, "warehouseId": 4, "quantity": 8},
+
+  {"id": 37, "productId": 14, "warehouseId": 1, "quantity": 1450},
+  {"id": 38, "productId": 14, "warehouseId": 2, "quantity": 980},
+  {"id": 39, "productId": 14, "warehouseId": 3, "quantity": 720},
+  {"id": 40, "productId": 14, "warehouseId": 4, "quantity": 650},
+
+  {"id": 41, "productId": 15, "warehouseId": 1, "quantity": 320},
+  {"id": 42, "productId": 15, "warehouseId": 5, "quantity": 180},
+
+  {"id": 43, "productId": 16, "warehouseId": 1, "quantity": 2100},
+  {"id": 44, "productId": 16, "warehouseId": 2, "quantity": 1850},
+  {"id": 45, "productId": 16, "warehouseId": 3, "quantity": 1500},
+
+  {"id": 46, "productId": 17, "warehouseId": 1, "quantity": 0},
+  {"id": 47, "productId": 17, "warehouseId": 2, "quantity": 150},
+
+  {"id": 48, "productId": 18, "warehouseId": 1, "quantity": 1250},
+  {"id": 49, "productId": 18, "warehouseId": 4, "quantity": 880},
+  {"id": 50, "productId": 18, "warehouseId": 6, "quantity": 620},
+
+  {"id": 51, "productId": 19, "warehouseId": 1, "quantity": 75},
+  {"id": 52, "productId": 19, "warehouseId": 3, "quantity": 42},
+
+  {"id": 53, "productId": 20, "warehouseId": 1, "quantity": 2800},
+  {"id": 54, "productId": 20, "warehouseId": 2, "quantity": 2200},
+  {"id": 55, "productId": 20, "warehouseId": 5, "quantity": 1650},
+
+  {"id": 56, "productId": 21, "warehouseId": 1, "quantity": 1400},
+  {"id": 57, "productId": 21, "warehouseId": 3, "quantity": 920},
+  {"id": 58, "productId": 21, "warehouseId": 6, "quantity": 580},
+
+  {"id": 59, "productId": 22, "warehouseId": 1, "quantity": 890},
+  {"id": 60, "productId": 22, "warehouseId": 2, "quantity": 650},
+  {"id": 61, "productId": 22, "warehouseId": 4, "quantity": 420},
+
+  {"id": 62, "productId": 23, "warehouseId": 1, "quantity": 55},
+  {"id": 63, "productId": 23, "warehouseId": 5, "quantity": 28},
+
+  {"id": 64, "productId": 24, "warehouseId": 1, "quantity": 480},
+  {"id": 65, "productId": 24, "warehouseId": 2, "quantity": 320},
+  {"id": 66, "productId": 24, "warehouseId": 6, "quantity": 180},
+
+  {"id": 67, "productId": 25, "warehouseId": 1, "quantity": 0},
+  {"id": 68, "productId": 25, "warehouseId": 4, "quantity": 12},
+
+  {"id": 69, "productId": 26, "warehouseId": 1, "quantity": 320},
+  {"id": 70, "productId": 26, "warehouseId": 3, "quantity": 185},
+  {"id": 71, "productId": 26, "warehouseId": 5, "quantity": 145},
+
+  {"id": 72, "productId": 27, "warehouseId": 1, "quantity": 85},
+  {"id": 73, "productId": 27, "warehouseId": 2, "quantity": 42},
+
+  {"id": 74, "productId": 28, "warehouseId": 1, "quantity": 520},
+  {"id": 75, "productId": 28, "warehouseId": 4, "quantity": 380},
+  {"id": 76, "productId": 28, "warehouseId": 6, "quantity": 290},
+
+  {"id": 77, "productId": 29, "warehouseId": 1, "quantity": 280},
+  {"id": 78, "productId": 29, "warehouseId": 2, "quantity": 195},
+  {"id": 79, "productId": 29, "warehouseId": 3, "quantity": 142},
+
+  {"id": 80, "productId": 30, "warehouseId": 1, "quantity": 18},
+  {"id": 81, "productId": 30, "warehouseId": 5, "quantity": 8}
+]

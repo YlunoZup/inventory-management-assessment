@@ -1,0 +1,152 @@
+[
+  {
+    "id": 1,
+    "productId": 1,
+    "fromWarehouseId": 1,
+    "toWarehouseId": 2,
+    "quantity": 50,
+    "notes": "Restocking West Coast for holiday season",
+    "status": "completed",
+    "createdAt": "2026-01-16T08:30:00.000Z"
+  },
+  {
+    "id": 2,
+    "productId": 3,
+    "fromWarehouseId": 1,
+    "toWarehouseId": 6,
+    "quantity": 200,
+    "notes": "Southeast expansion inventory",
+    "status": "completed",
+    "createdAt": "2026-01-16T09:15:00.000Z"
+  },
+  {
+    "id": 3,
+    "productId": 7,
+    "fromWarehouseId": 2,
+    "toWarehouseId": 4,
+    "quantity": 100,
+    "notes": "Midwest restocking",
+    "status": "completed",
+    "createdAt": "2026-01-15T14:20:00.000Z"
+  },
+  {
+    "id": 4,
+    "productId": 14,
+    "fromWarehouseId": 1,
+    "toWarehouseId": 3,
+    "quantity": 150,
+    "notes": "Southern Hub replenishment",
+    "status": "completed",
+    "createdAt": "2026-01-15T11:45:00.000Z"
+  },
+  {
+    "id": 5,
+    "productId": 20,
+    "fromWarehouseId": 1,
+    "toWarehouseId": 5,
+    "quantity": 300,
+    "notes": "Pacific Northwest stock transfer",
+    "status": "completed",
+    "createdAt": "2026-01-14T16:30:00.000Z"
+  },
+  {
+    "id": 6,
+    "productId": 11,
+    "fromWarehouseId": 3,
+    "toWarehouseId": 5,
+    "quantity": 80,
+    "notes": "Balancing inventory levels",
+    "status": "completed",
+    "createdAt": "2026-01-14T10:00:00.000Z"
+  },
+  {
+    "id": 7,
+    "productId": 22,
+    "fromWarehouseId": 1,
+    "toWarehouseId": 4,
+    "quantity": 120,
+    "notes": "Urgent restock request",
+    "status": "completed",
+    "createdAt": "2026-01-13T13:15:00.000Z"
+  },
+  {
+    "id": 8,
+    "productId": 18,
+    "fromWarehouseId": 1,
+    "toWarehouseId": 6,
+    "quantity": 200,
+    "notes": "New store opening support",
+    "status": "completed",
+    "createdAt": "2026-01-13T09:30:00.000Z"
+  },
+  {
+    "id": 9,
+    "productId": 2,
+    "fromWarehouseId": 1,
+    "toWarehouseId": 5,
+    "quantity": 250,
+    "notes": "Weekly distribution",
+    "status": "completed",
+    "createdAt": "2026-01-12T15:45:00.000Z"
+  },
+  {
+    "id": 10,
+    "productId": 16,
+    "fromWarehouseId": 2,
+    "toWarehouseId": 3,
+    "quantity": 400,
+    "notes": "Summer demand preparation",
+    "status": "completed",
+    "createdAt": "2026-01-12T11:20:00.000Z"
+  },
+  {
+    "id": 11,
+    "productId": 21,
+    "fromWarehouseId": 1,
+    "toWarehouseId": 3,
+    "quantity": 180,
+    "notes": "Regular replenishment",
+    "status": "completed",
+    "createdAt": "2026-01-11T14:00:00.000Z"
+  },
+  {
+    "id": 12,
+    "productId": 28,
+    "fromWarehouseId": 1,
+    "toWarehouseId": 4,
+    "quantity": 150,
+    "notes": "Quarterly distribution",
+    "status": "completed",
+    "createdAt": "2026-01-11T08:45:00.000Z"
+  },
+  {
+    "id": 13,
+    "productId": 12,
+    "fromWarehouseId": 2,
+    "toWarehouseId": 6,
+    "quantity": 100,
+    "notes": "New account fulfillment",
+    "status": "completed",
+    "createdAt": "2026-01-10T16:30:00.000Z"
+  },
+  {
+    "id": 14,
+    "productId": 4,
+    "fromWarehouseId": 1,
+    "toWarehouseId": 3,
+    "quantity": 200,
+    "notes": "Restaurant chain order support",
+    "status": "completed",
+    "createdAt": "2026-01-10T10:15:00.000Z"
+  },
+  {
+    "id": 15,
+    "productId": 29,
+    "fromWarehouseId": 1,
+    "toWarehouseId": 2,
+    "quantity": 75,
+    "notes": "West Coast rebalancing",
+    "status": "completed",
+    "createdAt": "2026-01-09T13:00:00.000Z"
+  }
+]
