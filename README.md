@@ -431,7 +431,7 @@ This implementation completes all 3 required tasks plus extensive additional enh
 
 ```json
 {
-  "recharts": "^3.6.0",           // Charts and data visualization
+  "recharts": "^2.12.7",          // Charts and data visualization
   "date-fns": "^4.1.0",           // Date formatting utilities
   "notistack": "^3.0.2",          // Toast notifications
   "react-sparklines": "^1.7.0"    // Mini sparkline charts in stat cards
@@ -598,7 +598,9 @@ inventory-management-system/
 
 ## Live Demo
 
-[To be added after Vercel deployment]
+**[https://inventory-management-assessment.vercel.app](https://inventory-management-assessment.vercel.app)**
+
+Deployed on Vercel with automatic deployments from GitHub.
 
 ---
 
@@ -617,6 +619,15 @@ inventory-management-system/
 
 ---
 
-**Built with** Next.js 15, Material-UI v6, React 19, Recharts
+## Deployment & Version Control
+
+- **Live Demo**: [https://inventory-management-assessment.vercel.app](https://inventory-management-assessment.vercel.app)
+- **GitHub Repository**: [https://github.com/YlunoZup/inventory-management-assessment](https://github.com/YlunoZup/inventory-management-assessment)
+- **Hosting**: Vercel (automatic deployments on push to main branch)
+- **CI/CD**: GitHub → Vercel integration with automatic builds
+
+---
+
+**Built with** Next.js 15.5.9, Material-UI v6, React 18.3, Recharts 2.12.7
 
 **Documentation**: See INFRASTRUCTURE.txt for complete architecture details
